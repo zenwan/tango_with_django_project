@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Rango</title>
+</head>
+<body>
+<h1> Rango Say</h1>
+<div>
+    hey there partner! <br>
+    <strong>{{ boldmessage }}</strong>
+</div>
+<div>
+    <a href="/rango/about/">About</a><br>
+</div>
+<div>
+    <img src="{% static 'images/logo.jpg' %}" alt="pic or logo">
+</div>
+<strong>Most Liked Categories</strong>
+<div>
+    {% if categories %}
+    <ul>
+        {% for category in categories %}
+            <li>
+            <a href="/rango/category/{{ category.slug }}">{{ category.name }},{{ category.slug }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+        {% else %}
+        <strong>::没有类别显示::</strong>
+    {% endif %}
+</div>
+
+<strong>Most Views Pages</strong>
+<div>
+    {% if pages  %}
+    <ul>
+        {% for page in pages %}
+             <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+        {% endfor %}
+    </ul>
+        {% else %}
+        <strong>::没有类别显示::</strong>
+    {% endif %}
+
+</div>
+</body>
+</html>
